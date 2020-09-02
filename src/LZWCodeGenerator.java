@@ -20,7 +20,6 @@ public class LZWCodeGenerator {
 		String current = "";
 		for (char character: originalText.toCharArray()) {
 			current += character;
-			
 			if (!dict.containsKey(current)) {
 				dict.put(current, dictSize);
 				dictSize++;
