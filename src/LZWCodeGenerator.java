@@ -28,11 +28,11 @@ public class LZWCodeGenerator {
 			}
 		}
 		
-		if (old.equals("")) {
+		if (current.equals("")) {
 			// we r good
 		}
 		else {
-			compressedText.add(dict.get(old));
+			compressedText.add(dict.get(current));
 		}
 		
 		// returns the arraylist to be converted to .txt file
