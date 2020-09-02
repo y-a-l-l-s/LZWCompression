@@ -13,18 +13,15 @@ public class LZWCodeGenerator {
 			dict.put("" + (char)i, i);
 		}
 		
-		String old = "";
+		String current = "";
 		for (char character: originalText.toCharArray()) {
-			String current = old + character;
+			current += character;
 			
-			if (dict.containsKey(current)) {
-				old = current;
-			}
-			// have to also add something here to make sure that it doesn't exceed the max size
-			else {
-				dict.put(current, dictSize++);
-				compressedText.add(dict.get(old));
-				old = Character.toString(character);
+			if (!dict.containsKey(current)) {
+				dict.put(current, dictSize);
+				dictSize++;
+				compressedText.add(dict.get(current.substring(0,current.length()-1)));
+				current = current.substring(current.length()-1);
 			}
 		}
 		
