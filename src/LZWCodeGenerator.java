@@ -3,6 +3,10 @@ import java.awt.List;
 
 public class LZWCodeGenerator {
 
+	public static void main(String [] args) {
+		
+	}
+	
 	public static ArrayList compressText(String originalText) {
 		// all starting characters
 		int dictSize = 256;
