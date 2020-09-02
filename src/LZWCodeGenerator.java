@@ -1,13 +1,21 @@
 import java.util.*;
 import java.awt.List;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class LZWCodeGenerator {
 
+<<<<<<< HEAD
 	public static void main(String [] args) {
 		
 	}
 	
 	public static ArrayList compressText(String originalText) {
+=======
+	public static ArrayList compressText(String inputFile) throws IOException {
+>>>>>>> 4267e748c0ae6d2286460574aa16015ec9db9ff6
 		// all starting characters
 		int dictSize = 256;
 		// max length for the hashmap
@@ -21,9 +29,11 @@ public class LZWCodeGenerator {
 			dict.put("" + (char)i, i);
 		}
 		
+		BufferedReader br = new BufferedReader(new FileReader(inputFile));
+		
 		String current = "";
-		for (char character: originalText.toCharArray()) {
-			current += character;
+		while(br.ready()) {
+			current += (char)br.read();
 			if (!dict.containsKey(current)) {
 				dict.put(current, dictSize);
 				dictSize++;
