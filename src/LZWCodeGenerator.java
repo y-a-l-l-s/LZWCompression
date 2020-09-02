@@ -41,10 +41,7 @@ public class LZWCodeGenerator {
 		}
 		br.close();
 		
-		if (current.toString().equals("")) {
-			// we r good
-		}
-		else {
+		if (!current.toString().equals("")) {
 			compressedText.add(dict.get(current.toString()));
 		}
 		
