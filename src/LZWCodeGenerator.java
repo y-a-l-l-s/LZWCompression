@@ -11,7 +11,7 @@ public class LZWCodeGenerator {
 		
 	}
 
-	public static ArrayList compressText(String inputFile) throws IOException {
+	public static ArrayList<Integer> compressText(String inputFile) throws IOException {
 		// all starting characters
 		int dictSize = 256;
 		// max length for the hashmap
@@ -27,23 +27,25 @@ public class LZWCodeGenerator {
 		
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		
-		String current = "";
+		StringBuffer current = new StringBuffer();
 		while(br.ready()) {
-			current += (char)br.read();
-			if (!dict.containsKey(current)) {
-				dict.put(current, dictSize);
-				dictSize++;
+			current.append((char)br.read());
+			if (!dict.containsKey(current.toString())) {
+				if(dictSize < maxSize) {
+					dict.put(current.toString(), dictSize);
+					dictSize++;
+				}
 				compressedText.add(dict.get(current.substring(0,current.length()-1)));
-				current = current.substring(current.length()-1);
+				current.delete(0, current.length()-1);
 			}
 		}
 		br.close();
 		
-		if (current.equals("")) {
+		if (current.toString().equals("")) {
 			// we r good
 		}
 		else {
-			compressedText.add(dict.get(current));
+			compressedText.add(dict.get(current.toString()));
 		}
 		
 		// returns the arraylist to be converted to .txt file
