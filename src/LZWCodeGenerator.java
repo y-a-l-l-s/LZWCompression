@@ -28,6 +28,12 @@ public class LZWCodeGenerator {
 			}
 		}
 		
+		if (old.equals("")) {
+			// we r good
+		}
+		else {
+			compressedText.add(dict.get(old));
+		}
 		
 		return compressedText;
 	}
