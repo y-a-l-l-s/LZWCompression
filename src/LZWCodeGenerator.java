@@ -15,7 +15,7 @@ public class LZWCodeGenerator {
 		// all starting characters
 		int dictSize = 256;
 		// max length for the hashmap
-		int maxSize = 2048;
+		int maxSize = 4096;
 		
 		HashMap<String, Integer> dict = new HashMap<String, Integer>();
 		ArrayList<Integer> compressedText = new ArrayList<Integer>();
