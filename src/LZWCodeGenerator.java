@@ -37,6 +37,7 @@ public class LZWCodeGenerator {
 				current = current.substring(current.length()-1);
 			}
 		}
+		br.close();
 		
 		if (current.equals("")) {
 			// we r good
