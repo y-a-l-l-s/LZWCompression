@@ -7,15 +7,11 @@ import java.io.IOException;
 
 public class LZWCodeGenerator {
 
-<<<<<<< HEAD
 	public static void main(String [] args) {
 		
 	}
-	
-	public static ArrayList compressText(String originalText) {
-=======
+
 	public static ArrayList compressText(String inputFile) throws IOException {
->>>>>>> 4267e748c0ae6d2286460574aa16015ec9db9ff6
 		// all starting characters
 		int dictSize = 256;
 		// max length for the hashmap
