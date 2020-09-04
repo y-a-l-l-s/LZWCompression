@@ -15,7 +15,7 @@ public class LZWCodeGenerator {
 	public static void compressText(String inputFile) throws IOException {
 		// all starting characters
 		int dictSize = 256;
-		// max length for the hashmap
+		// max size for the hashmap
 		int maxSize = 4096;
 		
 		HashMap<String, Integer> dict = new HashMap<String, Integer>();
