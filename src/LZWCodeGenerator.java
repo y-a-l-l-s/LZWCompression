@@ -29,13 +29,14 @@ public class LZWCodeGenerator {
 			dict.put("" + (char)i, i);
 		}
 		
-		BufferedReader br = new BufferedReader(new FileReader(inputFile));
+		BufferedReader br = new BufferedReader(new FileReader(inputFile)); // initalize
 		
 		StringBuffer current = new StringBuffer();
 		while(br.ready()) {
 			current.append((char)br.read());
 			if (!dict.containsKey(current.toString())) { // check if new string
 				if(dictSize < maxSize) { // check if hashmap has space left
+					// adds to the hashmap
 					dict.put(current.toString(), dictSize);
 					dictSize++;
 				}
