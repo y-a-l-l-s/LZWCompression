@@ -29,7 +29,7 @@ public class LZWCodeGenerator {
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		
 		StringBuffer current = new StringBuffer();
-		while(br.ready()) {
+		while(br.ready()) { // RETRIEVE NUMBERS TO ENCODE
 			current.append((char)br.read());
 			if (!dict.containsKey(current.toString())) { // check if new string
 				if(dictSize < maxSize) { // check if hashmap has space left
@@ -47,29 +47,29 @@ public class LZWCodeGenerator {
 			compressedText.add(dict.get(current.toString()));
 		}
 		
-		// encode text
+		// ENCODE TEXT
 		PrintWriter pw = new PrintWriter(inputFile + ".lzw");
 		StringBuffer str = new StringBuffer();
 		
-		for (int i = 0; i < compressedText.size(); i++) {
-			String num = Integer.toBinaryString(compressedText.get(i)); // adding binary
+		for (int i = 0; i < compressedText.size(); i++) { // convert array list to binary and add to string
+			String num = Integer.toBinaryString(compressedText.get(i)); 
 			while(num.length() < 8) {
 				num = "0" + num;
 			}
 			str.append(num);
 			
-			while(str.length() > 8) { // convert binary to encoded character
+			while(str.length() > 8) { // convert binary to encoded character and add to .txt
 				pw.print((char)Integer.parseInt(str.substring(0,8), 2));
 				str.delete(0, 8);
 			}
 		}
-		int left = 8 - (str.length() % 8); // add extra zeroes
+		int left = 8 - (str.length() % 8); // add extra zeroes for padding
 		if(left != 8) {
 			for(int j = 0; j < left; j++) {
 				str.append("0");
 			}
 		}
-		for(int i = 0; i < str.length(); i = i + 8) { // add leftovers to txt
+		for(int i = 0; i < str.length(); i = i + 8) { // add padded ending to .txt
 			pw.print((char)Integer.parseInt(str.substring(i,i+8), 2));
 		}
 		pw.print((char)left); // add character for number of extra zeroes
