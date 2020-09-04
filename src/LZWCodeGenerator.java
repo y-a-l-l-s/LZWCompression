@@ -13,11 +13,7 @@ public class LZWCodeGenerator {
 		
 	}
 
-<<<<<<< HEAD
 	public static void compressText(String inputFile) throws IOException {
-=======
-	public static ArrayList<Integer> compressText(String inputFile) throws IOException {
->>>>>>> e89bf8e068b0c3169edc187f2d707e460fcd9726
 		// all starting characters
 		int dictSize = 256;
 		// max length for the hashmap
