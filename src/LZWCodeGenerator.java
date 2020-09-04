@@ -54,6 +54,7 @@ public class LZWCodeGenerator {
 		
 		for (int i = 0; i < compressedText.size(); i++) { // convert array list to binary and add to string
 			String num = Integer.toBinaryString(compressedText.get(i)); 
+			// pads 0s to make it 8 long
 			while(num.length() < 8) {
 				num = "0" + num;
 			}
