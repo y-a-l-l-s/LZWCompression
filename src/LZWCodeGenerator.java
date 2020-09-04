@@ -30,17 +30,18 @@ public class LZWCodeGenerator {
 		StringBuffer current = new StringBuffer();
 		while(br.ready()) {
 			current.append((char)br.read());
-			if (!dict.containsKey(current.toString())) {
-				if(dictSize < maxSize) {
+			if (!dict.containsKey(current.toString())) { // check if new string
+				if(dictSize < maxSize) { // check if hashmap has space left
 					dict.put(current.toString(), dictSize);
 					dictSize++;
 				}
-				compressedText.add(dict.get(current.substring(0,current.length()-1)));
+				compressedText.add(dict.get(current.substring(0,current.length()-1))); // add number to arraylist
 				current.delete(0, current.length()-1);
 			}
 		}
 		br.close();
 		
+		// final encoded character
 		if (!current.toString().equals("")) {
 			compressedText.add(dict.get(current.toString()));
 		}
