@@ -1,10 +1,13 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
-test
 public class LZWLRDecoder {
 	private HashMap<String,Integer>tableOfCodes;
 	public LZWLRDecoder()
 	{
-		
+
 	}
 	public HashMap<String, Integer> fillInAsciiValues()
 	{
@@ -15,10 +18,21 @@ public class LZWLRDecoder {
 		}
 		return tableOfCodes;
 	}
-	
-	public void decode(String inputFile)
+
+	public void decode(String inputFile) throws IOException
 	{
-		
+		BufferedReader br = new BufferedReader(new FileReader (inputFile));
+		PrintWriter pw = new PrintWriter("decodedfile.txt");
+		StringBuffer currentChars = new StringBuffer();
+		while (br.ready())
+		{
+			currentChars.append (br.read());
+			if (tableOfCodes.get(currentChars)!=null)
+			{
+				pw.print(tableOfCodes.get(currentChars));
+			}
+		}
+
 	}
-	
+
 }
