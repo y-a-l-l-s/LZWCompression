@@ -1,1 +1,4 @@
-/fileToCompress.txt
+/.DS_Store
+/LZWCodeGenerator.class
+/LZWDecoder.class
+/LZWLRDecoder.class
