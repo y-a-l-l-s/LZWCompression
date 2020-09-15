@@ -1,5 +1,5 @@
 import java.util.HashMap;
-
+test
 public class LZWLRDecoder {
 	private HashMap<String,Integer>tableOfCodes;
 	public LZWLRDecoder()
