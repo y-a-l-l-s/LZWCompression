@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 public class LZWLRDecoder {
+	final static int CHARDIGITS = 16;
+	final static int NUMOFBINDIGITS = 12;
 	private HashMap<String,Integer>tableOfCodes;
 	public LZWLRDecoder()
 	{
