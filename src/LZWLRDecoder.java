@@ -7,17 +7,17 @@ import java.util.HashMap;
 public class LZWLRDecoder {
 	final static int CHARDIGITS = 16;
 	final static int NUMOFBINDIGITS = 12;
-	private HashMap<String,Integer>tableOfCodes;
+	private HashMap<Integer,String>tableOfCodes;
 	public LZWLRDecoder()
 	{
 
 	}
-	public HashMap<String, Integer> fillInAsciiValues()
+	public HashMap<Integer, String> fillInAsciiValues()
 	{
-		tableOfCodes = new HashMap<String, Integer>();
+		tableOfCodes = new HashMap<Integer, String>();
 		for (int i = 0; i < 128; i++)
 		{
-			tableOfCodes.put(Character.toString((char)i), (Integer)i);
+			tableOfCodes.put((Integer)i, Character.toString((char)i));
 		}
 		return tableOfCodes;
 	}
@@ -46,9 +46,9 @@ public class LZWLRDecoder {
 		for(int i = 0; i<encodedInts.size();i++)
 		{
 			int currentInt = encodedInts.get(i);
-			if(tableOfCodes.containsValue(currentInt))
+			if(tableOfCodes.get(currentInt)!=null)
 			{
-				pw.print((char)currentInt);
+				pw.print(tableOfCodes.get(currentInt));
 			}
 			else
 			{
