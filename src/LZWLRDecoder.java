@@ -25,8 +25,16 @@ public class LZWLRDecoder {
 	{
 		BufferedReader br = new BufferedReader(new FileReader (inputFile));
 		PrintWriter pw = new PrintWriter("decodedfile.txt");
-		
-
+		StringBuffer str = new StringBuffer();
+		while (br.ready())
+		{
+			String current = Integer.toBinaryString(br.read());
+			while (current.length()<CHARDIGITS)
+			{
+				current = "0" + current;
+			}
+			str.append(current);
+		}
 	}
 
 }
