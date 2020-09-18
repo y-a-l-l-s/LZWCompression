@@ -39,20 +39,9 @@ public class LZWLRDecoder {
 		ArrayList<Integer> encodedInts = new ArrayList<Integer>();
 		while(str.length()>0)
 		{
-			int convertedChunk = (Integer.parseInt(str.substring(0,12)));
-			encodedInts.add(convertedChunk);		
-		}
-		for(int i = 0; i<encodedInts.size(); i++)
-		{
-			int currentInt = encodedInts.get(i);
-			if(tableOfCodes.containsValue(currentInt))
-			{
-				pw.print((char)(currentInt));
-			}
-			else
-			{
-			}
-			
+			int convertedChunk = (Integer.parseInt(str.substring(0,NUMOFBINDIGITS)));
+			encodedInts.add(convertedChunk);
+			str.delete(0, NUMOFBINDIGITS);
 		}
 	}
 
