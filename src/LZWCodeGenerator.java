@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class LZWCodeGenerator {
-final static int DICTINT = 128;
+static int DICTINT = 128;
 final static int NUMOFBINDIGITS = 12;
 final static int CHARDIGITS = 16;
-final int MAXHASHSIZE = (int) Math.pow(2,  NUMOFBINDIGITS);
+final static int MAXHASHSIZE = (int) Math.pow(2,  NUMOFBINDIGITS);
 	public static void main(String [] args) throws IOException {
 		compressText("fileToCompress.txt");
 	}
@@ -30,10 +30,10 @@ final int MAXHASHSIZE = (int) Math.pow(2,  NUMOFBINDIGITS);
 		while(br.ready()) { // RETRIEVE NUMBERS TO ENCODE
 			current.append((char)br.read());
 			if (!dict.containsKey(current.toString())) { // check if new string
-				if(dictSize < maxSize) { // check if hashmap has space left
+				if(DICTINT < MAXHASHSIZE) { // check if hashmap has space left
 					// adds to the hashmap
-					dict.put(current.toString(), dictSize);
-					dictSize++;
+					dict.put(current.toString(), dict.size());
+					DICTINT++;
 				}
 				compressedText.add(dict.get(current.substring(0,current.length()-1))); // add number to arraylist
 				current.delete(0, current.length()-1);
