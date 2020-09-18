@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 public class LZWLRDecoder {
 	final static int CHARDIGITS = 16;
@@ -35,9 +36,11 @@ public class LZWLRDecoder {
 			}
 			str.append(current);
 		}
+		ArrayList<Integer> encodedInts = new ArrayList<Integer>();
 		while(str.length()>0)
 		{
 			int convertedChunk = (Integer.parseInt(str.substring(0,NUMOFBINDIGITS)));
+			encodedInts.add(convertedChunk);
 			
 		}
 	}
