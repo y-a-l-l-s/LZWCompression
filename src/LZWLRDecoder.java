@@ -40,7 +40,18 @@ public class LZWLRDecoder {
 		while(str.length()>0)
 		{
 			int convertedChunk = (Integer.parseInt(str.substring(0,12)));
-			encodedInts.add(convertedChunk);
+			encodedInts.add(convertedChunk);		
+		}
+		for(int i = 0; i<encodedInts.size(); i++)
+		{
+			int currentInt = encodedInts.get(i);
+			if(tableOfCodes.containsValue(currentInt))
+			{
+				pw.print((char)(currentInt));
+			}
+			else
+			{
+			}
 			
 		}
 	}
