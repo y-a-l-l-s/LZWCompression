@@ -43,6 +43,18 @@ public class LZWLRDecoder {
 			encodedInts.add(convertedChunk);
 			str.delete(0, NUMOFBINDIGITS);
 		}
+		for(int i = 0; i<encodedInts.size();i++)
+		{
+			int currentInt = encodedInts.get(i);
+			if(tableOfCodes.containsValue(currentInt))
+			{
+				pw.print((char)currentInt);
+			}
+			else
+			{
+				
+			}
+		}
 	}
 
 }
