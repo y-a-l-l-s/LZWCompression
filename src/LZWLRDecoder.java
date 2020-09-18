@@ -41,7 +41,7 @@ public class LZWLRDecoder {
 		{
 			int convertedChunk = (Integer.parseInt(str.substring(0,NUMOFBINDIGITS)));
 			encodedInts.add(convertedChunk);
-			
+			str.delete(0, NUMOFBINDIGITS);
 		}
 	}
 
