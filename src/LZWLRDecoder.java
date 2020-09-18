@@ -23,15 +23,7 @@ public class LZWLRDecoder {
 	{
 		BufferedReader br = new BufferedReader(new FileReader (inputFile));
 		PrintWriter pw = new PrintWriter("decodedfile.txt");
-		StringBuffer currentChars = new StringBuffer();
-		while (br.ready())
-		{
-			currentChars.append (br.read());
-			if (tableOfCodes.get(currentChars)!=null)
-			{
-				pw.print(tableOfCodes.get(currentChars));
-			}
-		}
+		
 
 	}
 
