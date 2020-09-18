@@ -35,6 +35,11 @@ public class LZWLRDecoder {
 			}
 			str.append(current);
 		}
+		while(str.length()>0)
+		{
+			int convertedChunk = (Integer.parseInt(str.substring(0,12)));
+			
+		}
 	}
 
 }
