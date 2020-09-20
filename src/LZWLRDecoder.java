@@ -7,9 +7,9 @@ import java.util.HashMap;
 public class LZWLRDecoder {
 	static int tableOfCodesSize= 128;
 	final static int CHARDIGITS = 16; //number of digits assigned to each char
-	final static int NUMOFBINDIGITS = 12;
+	final static int NUMOFBINDIGITS = 12; 
 	private HashMap<Integer,String>tableOfCodes;
-	public LZWLRDecoder()
+	public LZWLRDecoder() //initializes empty decoder
 	{
 
 	}
@@ -66,7 +66,6 @@ public class LZWLRDecoder {
 				tableOfCodes.put(tableOfCodesSize, currentStr+currentStr.substring(0,1));
 			}
 			tableOfCodesSize++;
-
 		}
 		br.close();
 		pw.close();
