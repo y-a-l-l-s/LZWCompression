@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class LZWLRDecoder {
 	static int tableOfCodesSize= 128;
-	final static int CHARDIGITS = 16;
+	final static int CHARDIGITS = 16; //number of digits assigned to each char
 	final static int NUMOFBINDIGITS = 12;
 	private HashMap<Integer,String>tableOfCodes;
 	public LZWLRDecoder()
 	{
 
 	}
+	//fills in hashmap with the 127 ascii values and their corresponding characters
 	public HashMap<Integer, String> fillInAsciiValues()
 	{
 		tableOfCodes = new HashMap<Integer, String>();
@@ -30,14 +31,15 @@ public class LZWLRDecoder {
 		StringBuffer str = new StringBuffer();
 		while (br.ready())
 		{
-			String current = Integer.toBinaryString(br.read());
-			while (current.length()<CHARDIGITS)
+			String current = Integer.toBinaryString(br.read()); //converts char to a binary string
+			while (current.length()<CHARDIGITS) //pads converted char binary strings with zeros until they are all length 16
 			{
 				current = "0" + current;
 			}
 			str.append(current);
 		}
 		ArrayList<Integer> encodedInts = new ArrayList<Integer>();
+		//reading through stringbuffer str and taking 12 digits chunks to convert to single integers
 		while(str.length()>0)
 		{
 			int convertedChunk = (Integer.parseInt(str.substring(0,NUMOFBINDIGITS)));
@@ -45,7 +47,7 @@ public class LZWLRDecoder {
 			str.delete(0, NUMOFBINDIGITS);
 		}
 		String previousOutput = "";
-		for(int i = 0; i<encodedInts.size()-1;i++)
+		for(int i = 0; i<encodedInts.size()-1;i++) //converting arraylist of ints into chars and building tableOfCodes
 		{
 			int currentInt = encodedInts.get(i);
 			String currentStr = tableOfCodes.get(currentInt);
