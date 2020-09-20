@@ -60,7 +60,6 @@ public class LZWLRDecoder {
 			else
 			{
 				tableOfCodes.put(tableOfCodesSize, currentStr+currentStr.substring(0,1));
-				pw.print(tableOfCodes.get(currentInt));
 			}
 
 		}
