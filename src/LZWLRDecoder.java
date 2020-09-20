@@ -26,6 +26,7 @@ public class LZWLRDecoder {
 
 	public void decode(String inputFile) throws IOException
 	{
+		tableOfCodes = this.fillInAsciiValues();
 		BufferedReader br = new BufferedReader(new FileReader (inputFile));
 		PrintWriter pw = new PrintWriter("decodedfile.txt");
 		StringBuffer str = new StringBuffer();
