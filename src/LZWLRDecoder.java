@@ -36,7 +36,10 @@ public class LZWLRDecoder {
 			{
 				current = "0" + current;
 			}
-			str.append(current);
+			if(br.ready())//accounting for extra char from encoder
+			{
+				str.append(current);
+			}
 		}
 		ArrayList<Integer> encodedInts = new ArrayList<Integer>();
 		//reading through stringbuffer str and taking 12 digits chunks to convert to single integers
