@@ -55,12 +55,12 @@ public class LZWLRDecoder {
 			{
 				String add = tableOfCodes.get(encodedInts.get(i+1)).substring(0,1);
 				tableOfCodes.put(tableOfCodesSize, previousOutput+add);
-				tableOfCodesSize++;
 			}
 			else
 			{
 				tableOfCodes.put(tableOfCodesSize, currentStr+currentStr.substring(0,1));
 			}
+			tableOfCodesSize++;
 
 		}
 		br.close();
