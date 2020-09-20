@@ -19,7 +19,7 @@ final static int MAXHASHSIZE = (int) Math.pow(2,  NUMOFBINDIGITS);
 		HashMap<String, Integer> dict = new HashMap<String, Integer>();
 		ArrayList<Integer> compressedText = new ArrayList<Integer>();
 		
-		// adds all 256 characters to the hashmap
+		// adds dictInt characters to the hashmap
 		for (int i = 0; i < DICTINT; i++) {
 			dict.put("" + (char)i, i);
 		}
@@ -52,7 +52,7 @@ final static int MAXHASHSIZE = (int) Math.pow(2,  NUMOFBINDIGITS);
 		
 		for (int i = 0; i < compressedText.size(); i++) { // convert array list to binary and add to string
 			String num = Integer.toBinaryString(compressedText.get(i)); 
-			// pads 0s to make it 8 long
+			// pads 0s to make it numofbindigits long
 			while(num.length() < NUMOFBINDIGITS) {
 				num = "0" + num;
 			}
