@@ -44,7 +44,7 @@ public class LZWLRDecoder {
 			str.delete(0, NUMOFBINDIGITS);
 		}
 		String previousOutput = "";
-		for(int i = 0; i<encodedInts.size();i++)
+		for(int i = 0; i<encodedInts.size()-1;i++)
 		{
 			int currentInt = encodedInts.get(i);
 			pw.print(tableOfCodes.get(currentInt));
