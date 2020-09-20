@@ -51,7 +51,7 @@ public class LZWLRDecoder {
 			String currentStr = tableOfCodes.get(currentInt);
 			pw.print(currentStr);
 			previousOutput = currentStr;
-			if(tableOfCodes.get(encodedInts.get(i+1)).substring(0,1)!=null)
+			if(tableOfCodes.get(encodedInts.get(i+1))!=null)
 			{
 				String add = tableOfCodes.get(encodedInts.get(i+1)).substring(0,1);
 				tableOfCodes.put(tableOfCodesSize, previousOutput+add);
