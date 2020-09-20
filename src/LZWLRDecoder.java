@@ -43,12 +43,15 @@ public class LZWLRDecoder {
 			encodedInts.add(convertedChunk);
 			str.delete(0, NUMOFBINDIGITS);
 		}
+		String previousOutput = "";
+		String currentOutput = "";
 		for(int i = 0; i<encodedInts.size();i++)
 		{
 			int currentInt = encodedInts.get(i);
 			if(tableOfCodes.get(currentInt)!=null)
 			{
 				pw.print(tableOfCodes.get(currentInt));
+				previousOutput = tableOfCodes.get(currentInt);
 			}
 			else
 			{
