@@ -44,14 +44,13 @@ public class LZWLRDecoder {
 			str.delete(0, NUMOFBINDIGITS);
 		}
 		String previousOutput = "";
-		String currentOutput = "";
 		for(int i = 0; i<encodedInts.size();i++)
 		{
 			int currentInt = encodedInts.get(i);
 			pw.print(tableOfCodes.get(currentInt));
 			previousOutput = tableOfCodes.get(currentInt);
 			String add = tableOfCodes.get(encodedInts.get(i+1)).substring(0,1);
-			tableOfCodes.put (i+1, previousOutput+add);
+			tableOfCodes.put(i+1, previousOutput+add);
 		}
 		br.close();
 		pw.close();
