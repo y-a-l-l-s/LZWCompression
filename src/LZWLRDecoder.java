@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class LZWLRDecoder {
 	static int tableOfCodesSize= 128;
 	final static int CHARDIGITS = 16; //number of digits assigned to each char
-	final static int NUMOFBINDIGITS = 12; 
+	final static int NUMOFBINDIGITS = 12; //number of digits split into each binary chunk
 	private HashMap<Integer,String>tableOfCodes;
 	public LZWLRDecoder() //initializes empty decoder
 	{
