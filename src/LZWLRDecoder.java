@@ -47,18 +47,18 @@ public class LZWLRDecoder {
 			str.delete(0, NUMOFBINDIGITS);
 		}
 		String previousOutput = "";
-		for(int i = 0; i<encodedInts.size()-1;i++) //converting arraylist of ints into chars and building tableOfCodes
+		for(int i = 0; i<encodedInts.size()-1;i++) //convert arraylist of ints into chars and building tableOfCodes
 		{
 			int currentInt = encodedInts.get(i);
 			String currentStr = tableOfCodes.get(currentInt);
 			pw.print(currentStr);
 			previousOutput = currentStr;
-			if(tableOfCodes.get(encodedInts.get(i+1))!=null)
+			if(tableOfCodes.get(encodedInts.get(i+1))!=null) //check if code for next int in arraylist exists
 			{
 				String add = tableOfCodes.get(encodedInts.get(i+1)).substring(0,1);
 				tableOfCodes.put(tableOfCodesSize, previousOutput+add);
 			}
-			else
+			else//build tableOfCodes so that the next int in arraylist has a code
 			{
 				tableOfCodes.put(tableOfCodesSize, currentStr+currentStr.substring(0,1));
 			}
