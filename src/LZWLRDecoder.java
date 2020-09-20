@@ -55,6 +55,8 @@ public class LZWLRDecoder {
 				
 			}
 		}
+		br.close();
+		pw.close();
 	}
 
 }
