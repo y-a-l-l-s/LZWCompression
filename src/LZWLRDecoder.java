@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 public class LZWLRDecoder {
+	static int tableOfCodesSize = 128;
 	final static int CHARDIGITS = 16;
 	final static int NUMOFBINDIGITS = 12;
 	private HashMap<Integer,String>tableOfCodes;
@@ -45,13 +46,14 @@ public class LZWLRDecoder {
 		}
 		String previousOutput = "";
 		String currentOutput = "";
-		for(int i = 0; i<encodedInts.size();i++)
+		for(int i = 0; i<encodedInts.size()-1;i++)
 		{
 			int currentInt = encodedInts.get(i);
 			pw.print(tableOfCodes.get(currentInt));
 			previousOutput = tableOfCodes.get(currentInt);
 			String add = tableOfCodes.get(encodedInts.get(i+1)).substring(0,1);
-			tableOfCodes.put (i+1, previousOutput+add);
+			tableOfCodes.put(tableOfCodesSize, previousOutput+add);
+			tableOfCodesSize++;
 		}
 		br.close();
 		pw.close();
