@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+//improvements
 public class LZWCodeGenerator {
 static int DICTINT = 128;
 final static int NUMOFBINDIGITS = 12; //number of digits assigned to each char
