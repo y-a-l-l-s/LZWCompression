@@ -37,11 +37,6 @@ public class LZWLRDecoder {
 			{
 				current = "0" + current;
 			}
-//			if(br.ready())//accounting for extra char from encoder
-//			{
-//				str.append(current);
-//				current = "";
-//			}
 			str.append(current);
 			current="";
 		}
