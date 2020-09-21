@@ -37,19 +37,23 @@ public class LZWLRDecoder {
 			{
 				current = "0" + current;
 			}
-			if(br.ready())//accounting for extra char from encoder
-			{
-				str.append(current);
-			}
+//			if(br.ready())//accounting for extra char from encoder
+//			{
+//				str.append(current);
+//				current = "";
+//			}
+			str.append(current);
+			current="";
 		}
 		ArrayList<Integer> encodedInts = new ArrayList<Integer>();
 		//reading through stringbuffer str and taking 12 digits chunks to convert to single integers
-		while(str.length()>0)
+		while(str.length()>NUMOFBINDIGITS)
 		{
-			int convertedChunk = (Integer.parseInt(str.substring(0,NUMOFBINDIGITS)));
+			int convertedChunk = (Integer.parseInt(str.substring(0,NUMOFBINDIGITS),2));
 			encodedInts.add(convertedChunk);
 			str.delete(0, NUMOFBINDIGITS);
 		}
+		encodedInts.add(Integer.parseInt(str.substring(0), 2));
 		String previousOutput = "";
 		for(int i = 0; i<encodedInts.size()-1;i++) //convert arraylist of ints into chars and building tableOfCodes
 		{

@@ -10,7 +10,7 @@ final static int NUMOFBINDIGITS = 12; //number of digits assigned to each char
 final static int CHARDIGITS = 16; //number of digits split into binary chunks
 final static int MAXHASHSIZE = (int) Math.pow(2,  NUMOFBINDIGITS);
 	public static void main(String [] args) throws IOException {
-		compressText("fileToCompress.txt");
+		compressText("TesterEncoderFile");
 	}
 
 	public static void compressText(String inputFile) throws IOException {
