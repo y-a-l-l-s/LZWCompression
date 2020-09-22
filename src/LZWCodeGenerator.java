@@ -8,9 +8,9 @@ public class LZWCodeGenerator {
 static int DICTINT = 128;
 final static int NUMOFBINDIGITS = 12; //number of digits assigned to each char
 final static int CHARDIGITS = 16; //number of digits split into binary chunks
-final static int MAXHASHSIZE = (int) Math.pow(2,  NUMOFBINDIGITS);
+final static int MAXHASHSIZE = 2000;
 	public static void main(String [] args) throws IOException {
-		compressText("TesterEncoderFile");
+		compressText("big.txt");
 	}
 
 	public static void compressText(String inputFile) throws IOException {

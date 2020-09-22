@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class LZWLRDecoder {
 	static int tableOfCodesSize= 128;
+	final static int MAXHASHSIZE = 2000;
 	final static int CHARDIGITS = 16; //number of digits assigned to each char
 	final static int NUMOFBINDIGITS = 12; //number of digits split into each binary chunk
 	private HashMap<Integer,String>tableOfCodes;
@@ -56,6 +57,8 @@ public class LZWLRDecoder {
 			String currentStr = tableOfCodes.get(currentInt);
 			pw.print(currentStr);
 			previousOutput = currentStr;
+			if(tableOfCodes.size()<MAXHASHSIZE)
+			{
 			if(tableOfCodes.get(encodedInts.get(i+1))!=null) //check if code for next int in arraylist exists
 			{
 				String add = tableOfCodes.get(encodedInts.get(i+1)).substring(0,1);
@@ -66,6 +69,7 @@ public class LZWLRDecoder {
 				tableOfCodes.put(tableOfCodesSize, currentStr+currentStr.substring(0,1));
 			}
 			tableOfCodesSize++;
+			}
 		}
 		br.close();
 		pw.close();
