@@ -43,11 +43,12 @@ public class LZWLRDecoder {
 		}
 		ArrayList<Integer> encodedInts = new ArrayList<Integer>();
 		//reading through stringbuffer str and taking 12 digits chunks to convert to single integers
+		int index = 0;
 		while(str.length()>NUMOFBINDIGITS)
 		{
-			int convertedChunk = (Integer.parseInt(str.substring(0,NUMOFBINDIGITS),2));
+			int convertedChunk = (Integer.parseInt(str.substring(index,index+NUMOFBINDIGITS),2));
 			encodedInts.add(convertedChunk);
-			str.delete(0, NUMOFBINDIGITS);
+			index+=NUMOFBINDIGITS;
 		}
 		encodedInts.add(Integer.parseInt(str.substring(0), 2));
 		String previousOutput = "";
