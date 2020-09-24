@@ -50,7 +50,6 @@ public class LZWLRDecoder {
 			encodedInts.add(convertedChunk);
 			index+=NUMOFBINDIGITS;
 		}
-		encodedInts.add(Integer.parseInt(str.substring(0), 2));
 		String previousOutput = "";
 		for(int i = 0; i<encodedInts.size()-1;i++) //convert arraylist of ints into chars and building tableOfCodes
 		{
