@@ -15,11 +15,11 @@ public class EncoderNode {
 		this.last = node;
 	}
 	
-	public EncoderNode getNext (EncoderNode node) {
+	public EncoderNode getNext () {
 		return next;
 	}
 	
-	public EncoderNode getLast (EncoderNode node) {
+	public EncoderNode getLast () {
 		return last;
 	}
 }
