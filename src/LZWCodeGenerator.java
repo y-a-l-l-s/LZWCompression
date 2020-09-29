@@ -16,14 +16,14 @@ final static int MAXHASHSIZE = (int)Math.pow(2, CHARDIGITS);
 	public static void compressText(String inputFile) throws IOException {
 		HashMap<String, Integer> dict = new HashMap<String, Integer>();
 		ArrayList<Integer> compressedText = new ArrayList<Integer>();
-		
+
 		// adds dictInt characters to the hashmap
 		for (int i = 0; i < DICTINT; i++) {
 			dict.put("" + (char)i, i);
 		}
-		
+
 		BufferedReader br = new BufferedReader(new FileReader(inputFile)); // initalize
-		
+
 		StringBuffer current = new StringBuffer();
 		while(br.ready()) { // RETRIEVE NUMBERS TO ENCODE
 			current.append((char)br.read());
@@ -38,24 +38,24 @@ final static int MAXHASHSIZE = (int)Math.pow(2, CHARDIGITS);
 			}
 		}
 		br.close();
-		
+
 		// final encoded character
 		if (!current.toString().equals("")) {
 			compressedText.add(dict.get(current.toString()));
 		}
-		
+
 		// ENCODE TEXT
 		PrintWriter pw = new PrintWriter(inputFile + ".lzw");
 		StringBuffer str = new StringBuffer();
-		
+
 		for (int i = 0; i < compressedText.size(); i++) { // convert array list to binary and add to string
-			String num = Integer.toBinaryString(compressedText.get(i)); 
+			String num = Integer.toBinaryString(compressedText.get(i));
 			// pads 0s to make it numofbindigits long
 			while(num.length() < NUMOFBINDIGITS) {
 				num = "0" + num;
 			}
 			str.append(num);
-			
+
 			while(str.length() > CHARDIGITS) { // convert binary to encoded character and add to .txt
 				pw.print((char)Integer.parseInt(str.substring(0,CHARDIGITS), 2));
 				str.delete(0, CHARDIGITS);
