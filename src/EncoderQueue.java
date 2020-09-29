@@ -20,4 +20,13 @@ public class EncoderQueue {
 			node.setLast(oldLast);
 		}
 	}
+	
+	public void removeNode (String key) {
+		EncoderNode node = head;
+		while (node.getKey() != key) {
+			node = node.getNext();
+		}
+		node.getNext().setLast(node.getLast());
+		node.getLast().setNext(node.getNext());
+	}
 }

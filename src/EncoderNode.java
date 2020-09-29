@@ -22,4 +22,8 @@ public class EncoderNode {
 	public EncoderNode getLast () {
 		return last;
 	}
+	
+	public String getKey () {
+		return key;
+	}
 }
