@@ -8,10 +8,18 @@ public class EncoderNode {
 	}
 	
 	public void setNext (EncoderNode node) {
-		next = node;
+		this.next = node;
 	}
 	
 	public void setLast (EncoderNode node) {
-		last = node;
+		this.last = node;
+	}
+	
+	public EncoderNode getNext (EncoderNode node) {
+		return next;
+	}
+	
+	public EncoderNode getLast (EncoderNode node) {
+		return last;
 	}
 }
