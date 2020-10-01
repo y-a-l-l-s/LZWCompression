@@ -17,6 +17,9 @@ final static int MAXHASHSIZE = (int)Math.pow(2, CHARDIGITS);
 		HashMap<String, Integer> dict = new HashMap<String, Integer>();
 		ArrayList<Integer> compressedText = new ArrayList<Integer>();
 
+		EncoderQueue EQ = new EncoderQueue ();
+		
+
 		// adds dictInt characters to the hashmap
 		for (int i = 0; i < DICTINT; i++) {
 			dict.put("" + (char)i, i);
@@ -32,8 +35,18 @@ final static int MAXHASHSIZE = (int)Math.pow(2, CHARDIGITS);
 					// adds to the hashmap
 					dict.put(current.toString(), dict.size());
 					DICTINT++;
+					EQ.addNode(current.toString());
+				} else {
+					dict.put(current.toString(), dict.remove(EQ.pop()));
+					EQ.addNode(current.toString());
+					
 				}
-				compressedText.add(dict.get(current.substring(0,current.length()-1))); // add number to arraylist
+				String s = current.toString().substring(0, current.length()-1);
+				if (s.length() > 1) {
+					EQ.removeNode(s);
+					EQ.addNode(s);
+				}
+				compressedText.add(dict.get(s)); // add number to arraylist
 				current.delete(0, current.length()-1);
 			}
 		}
